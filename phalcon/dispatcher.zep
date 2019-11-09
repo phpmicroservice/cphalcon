@@ -86,6 +86,8 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 
 	protected _isControllerInitialize = false;
 
+	protected _handlerLasting = true;
+
 	const EXCEPTION_NO_DI = 0;
 
 	const EXCEPTION_CYCLIC_ROUTING = 1;
@@ -203,6 +205,22 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 	}
 
 	/**
+	 * Set whether the handler uses singleton mode
+	 */
+	 public function setHandlerLasting(boolean handlerLasting) -> void
+	 {
+		 let this->_handlerLasting = handlerLasting;
+	 }
+ 
+	 /**
+	  * Gets whether the handler uses singleton mode
+	  */
+	 public function getHandlerLasting() -> boolean
+	 {
+		 return this->_handlerLasting;
+	 }
+
+	/**
 	 * Sets the action name to be dispatched
 	 */
 	public function setActionName(string actionName) -> void
@@ -213,7 +231,7 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 	/**
 	 * Gets the latest dispatched action name
 	 */
-	public function getActionName() -> string
+	public function getActionName() -> boolean
 	{
 		return this->_actionName;
 	}
@@ -515,8 +533,15 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 				}
 				break;
 			}
-
-			let handler = dependencyInjector->getShared(handlerClass);
+			
+			let handlerLasting = this->_handlerLasting;
+			// If you need a singleton mode handler, use sharing
+			if handlerLasting {
+				let handler = dependencyInjector->getShared(handlerClass);
+			}else{
+				let handler = dependencyInjector->get(handlerClass);
+			}
+			
 			let wasFresh = dependencyInjector->wasFreshInstance();
 
 			// Handlers must be only objects
