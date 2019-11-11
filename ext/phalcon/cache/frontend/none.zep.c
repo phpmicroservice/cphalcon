@@ -12,6 +12,7 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/object.h"
 #include "kernel/memory.h"
 
 
@@ -63,7 +64,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_None) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon\\Cache\\Frontend, None, phalcon, cache_frontend_none, phalcon_cache_frontend_none_method_entry, 0);
 
-	zend_class_implements(phalcon_cache_frontend_none_ce TSRMLS_CC, 1, phalcon_cache_frontendinterface_ce);
+	zend_class_implements(phalcon_cache_frontend_none_ce, 1, phalcon_cache_frontendinterface_ce);
 	return SUCCESS;
 
 }
@@ -73,7 +74,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_None) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, getLifetime) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_LONG(1);
 
@@ -84,7 +86,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, getLifetime) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, isBuffering) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_BOOL(0);
 
@@ -95,7 +98,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, isBuffering) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, start) {
 
-	
+	zval *this_ptr = getThis();
+
 
 
 }
@@ -107,7 +111,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, start) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, getContent) {
 
-	
+	zval *this_ptr = getThis();
+
 
 
 }
@@ -117,7 +122,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, getContent) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, stop) {
 
-	
+	zval *this_ptr = getThis();
+
 
 
 }
@@ -127,9 +133,12 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, stop) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, beforeStore) {
 
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &data);
+	ZVAL_UNDEF(&data_sub);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &data);
 
 
 
@@ -143,9 +152,12 @@ PHP_METHOD(Phalcon_Cache_Frontend_None, beforeStore) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_None, afterRetrieve) {
 
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &data);
+	ZVAL_UNDEF(&data_sub);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &data);
 
 
 

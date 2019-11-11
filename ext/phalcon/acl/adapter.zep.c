@@ -30,40 +30,40 @@ ZEPHIR_INIT_CLASS(Phalcon_Acl_Adapter) {
 	 * Events manager
 	 * @var mixed
 	 */
-	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_eventsManager"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_eventsManager"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * Default access
 	 * @var bool
 	 */
-	zend_declare_property_bool(phalcon_acl_adapter_ce, SL("_defaultAccess"), 1, ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_bool(phalcon_acl_adapter_ce, SL("_defaultAccess"), 1, ZEND_ACC_PROTECTED);
 
 	/**
 	 * Access Granted
 	 * @var bool
 	 */
-	zend_declare_property_bool(phalcon_acl_adapter_ce, SL("_accessGranted"), 0, ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_bool(phalcon_acl_adapter_ce, SL("_accessGranted"), 0, ZEND_ACC_PROTECTED);
 
 	/**
 	 * Role which the list is checking if it's allowed to certain resource/access
 	 * @var string
 	 */
-	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeRole"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeRole"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * Resource which the list is checking if some role can access it
 	 * @var string
 	 */
-	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeResource"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeResource"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * Active access which the list is checking if some role can access it
 	 * @var string
 	 */
-	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeAccess"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_acl_adapter_ce, SL("_activeAccess"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_acl_adapter_ce TSRMLS_CC, 1, phalcon_acl_adapterinterface_ce);
-	zend_class_implements(phalcon_acl_adapter_ce TSRMLS_CC, 1, phalcon_events_eventsawareinterface_ce);
+	zend_class_implements(phalcon_acl_adapter_ce, 1, phalcon_acl_adapterinterface_ce);
+	zend_class_implements(phalcon_acl_adapter_ce, 1, phalcon_events_eventsawareinterface_ce);
 	return SUCCESS;
 
 }
@@ -73,7 +73,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Acl_Adapter) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, getActiveRole) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_activeRole");
 
@@ -84,7 +85,8 @@ PHP_METHOD(Phalcon_Acl_Adapter, getActiveRole) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, getActiveResource) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_activeResource");
 
@@ -95,7 +97,8 @@ PHP_METHOD(Phalcon_Acl_Adapter, getActiveResource) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, getActiveAccess) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_activeAccess");
 
@@ -106,13 +109,16 @@ PHP_METHOD(Phalcon_Acl_Adapter, getActiveAccess) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, setEventsManager) {
 
-	zval *eventsManager;
+	zval *eventsManager, eventsManager_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &eventsManager);
+	ZVAL_UNDEF(&eventsManager_sub);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &eventsManager);
 
 
 
-	zephir_update_property_this(getThis(), SL("_eventsManager"), eventsManager TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_eventsManager"), eventsManager);
 
 }
 
@@ -121,7 +127,8 @@ PHP_METHOD(Phalcon_Acl_Adapter, setEventsManager) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, getEventsManager) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_eventsManager");
 
@@ -132,17 +139,20 @@ PHP_METHOD(Phalcon_Acl_Adapter, getEventsManager) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, setDefaultAction) {
 
-	zval *defaultAccess_param = NULL, *_0;
+	zval *defaultAccess_param = NULL, _0;
 	zend_long defaultAccess;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &defaultAccess_param);
+	ZVAL_UNDEF(&_0);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &defaultAccess_param);
 
 	defaultAccess = zephir_get_intval(defaultAccess_param);
 
 
 	ZEPHIR_INIT_ZVAL_NREF(_0);
-	ZVAL_LONG(_0, defaultAccess);
-	zephir_update_property_this(getThis(), SL("_defaultAccess"), _0 TSRMLS_CC);
+	ZVAL_LONG(&_0, defaultAccess);
+	zephir_update_property_zval(this_ptr, SL("_defaultAccess"), &_0);
 
 }
 
@@ -151,7 +161,8 @@ PHP_METHOD(Phalcon_Acl_Adapter, setDefaultAction) {
  */
 PHP_METHOD(Phalcon_Acl_Adapter, getDefaultAction) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_defaultAccess");
 

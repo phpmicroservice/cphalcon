@@ -77,7 +77,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_Msgpack) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Phalcon\\Cache\\Frontend, Msgpack, phalcon, cache_frontend_msgpack, phalcon_cache_frontend_data_ce, phalcon_cache_frontend_msgpack_method_entry, 0);
 
-	zend_class_implements(phalcon_cache_frontend_msgpack_ce TSRMLS_CC, 1, phalcon_cache_frontendinterface_ce);
+	zend_class_implements(phalcon_cache_frontend_msgpack_ce, 1, phalcon_cache_frontendinterface_ce);
 	return SUCCESS;
 
 }
@@ -89,24 +89,31 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_Msgpack) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, __construct) {
 
-	zval *frontendOptions = NULL, *lifetime = NULL;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *frontendOptions = NULL, frontendOptions_sub, __$null, lifetime;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&frontendOptions_sub);
+	ZVAL_NULL(&__$null);
+	ZVAL_UNDEF(&lifetime);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &frontendOptions);
 
 	if (!frontendOptions) {
-		frontendOptions = ZEPHIR_GLOBAL(global_null);
+		frontendOptions = &frontendOptions_sub;
+		frontendOptions = &__$null;
 	}
 
 
-	ZEPHIR_OBS_VAR(lifetime);
-	if (zephir_array_isset_string_fetch(&lifetime, frontendOptions, SS("lifetime"), 0 TSRMLS_CC)) {
-		if (Z_TYPE_P(lifetime) != IS_LONG) {
+	ZEPHIR_OBS_VAR(&lifetime);
+	if (zephir_array_isset_string_fetch(&lifetime, frontendOptions, SL("lifetime"), 0)) {
+		if (Z_TYPE_P(&lifetime) != IS_LONG) {
 			ZEPHIR_THROW_EXCEPTION_DEBUG_STR(phalcon_cache_exception_ce, "Option 'lifetime' must be an integer", "phalcon/cache/frontend/msgpack.zep", 91);
 			return;
 		}
 	}
-	zephir_update_property_this(getThis(), SL("_frontendOptions"), frontendOptions TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_frontendOptions"), frontendOptions);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -116,13 +123,17 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, __construct) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, getLifetime) {
 
-	zval *options = NULL, *lifetime = NULL;
+	zval options, lifetime;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&options);
+	ZVAL_UNDEF(&lifetime);
 
 
-	options = zephir_fetch_nproperty_this(this_ptr, SL("_frontendOptions"), PH_NOISY_CC);
-	if (Z_TYPE_P(options) == IS_ARRAY) {
-		if (zephir_array_isset_string_fetch(&lifetime, options, SS("lifetime"), 1 TSRMLS_CC)) {
-			RETURN_CTORW(lifetime);
+	zephir_read_property(&options, this_ptr, SL("_frontendOptions"), PH_NOISY_CC | PH_READONLY);
+	if (Z_TYPE_P(&options) == IS_ARRAY) {
+		if (zephir_array_isset_string_fetch(&lifetime, &options, SL("lifetime"), 1)) {
+			RETURN_CTORW(&lifetime);
 		}
 	}
 	RETURN_LONG(1);
@@ -134,7 +145,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, getLifetime) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, isBuffering) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_BOOL(0);
 
@@ -145,7 +157,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, isBuffering) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, start) {
 
-	
+	zval *this_ptr = getThis();
+
 
 
 }
@@ -155,7 +168,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, start) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, getContent) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_NULL();
 
@@ -166,7 +180,8 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, getContent) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, stop) {
 
-	
+	zval *this_ptr = getThis();
+
 
 
 }
@@ -176,15 +191,19 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, stop) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, beforeStore) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&data_sub);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &data);
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("msgpack_pack", NULL, 138, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("msgpack_pack", NULL, 125, data);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -195,8 +214,12 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, beforeStore) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, afterRetrieve) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&data_sub);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &data);
@@ -207,7 +230,7 @@ PHP_METHOD(Phalcon_Cache_Frontend_Msgpack, afterRetrieve) {
 		RETVAL_ZVAL(data, 1, 0);
 		RETURN_MM();
 	}
-	ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unpack", NULL, 139, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unpack", NULL, 126, data);
 	zephir_check_call_status();
 	RETURN_MM();
 

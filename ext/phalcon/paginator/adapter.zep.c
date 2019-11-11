@@ -27,14 +27,14 @@ ZEPHIR_INIT_CLASS(Phalcon_Paginator_Adapter) {
 	/**
 	 * Number of rows to show in the paginator. By default is null
 	 */
-	zend_declare_property_null(phalcon_paginator_adapter_ce, SL("_limitRows"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_paginator_adapter_ce, SL("_limitRows"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * Current page in paginate
 	 */
-	zend_declare_property_null(phalcon_paginator_adapter_ce, SL("_page"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_paginator_adapter_ce, SL("_page"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_paginator_adapter_ce TSRMLS_CC, 1, phalcon_paginator_adapterinterface_ce);
+	zend_class_implements(phalcon_paginator_adapter_ce, 1, phalcon_paginator_adapterinterface_ce);
 	return SUCCESS;
 
 }
@@ -44,7 +44,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Paginator_Adapter) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, getLimit) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_limitRows");
 
@@ -55,17 +56,20 @@ PHP_METHOD(Phalcon_Paginator_Adapter, getLimit) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, setCurrentPage) {
 
-	zval *page_param = NULL, *_0;
+	zval *page_param = NULL, _0;
 	zend_long page;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &page_param);
+	ZVAL_UNDEF(&_0);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &page_param);
 
 	page = zephir_get_intval(page_param);
 
 
 	ZEPHIR_INIT_ZVAL_NREF(_0);
-	ZVAL_LONG(_0, page);
-	zephir_update_property_this(getThis(), SL("_page"), _0 TSRMLS_CC);
+	ZVAL_LONG(&_0, page);
+	zephir_update_property_zval(this_ptr, SL("_page"), &_0);
 	RETURN_THISW();
 
 }
@@ -75,17 +79,20 @@ PHP_METHOD(Phalcon_Paginator_Adapter, setCurrentPage) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, setLimit) {
 
-	zval *limitRows_param = NULL, *_0;
+	zval *limitRows_param = NULL, _0;
 	zend_long limitRows;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &limitRows_param);
+	ZVAL_UNDEF(&_0);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &limitRows_param);
 
 	limitRows = zephir_get_intval(limitRows_param);
 
 
 	ZEPHIR_INIT_ZVAL_NREF(_0);
-	ZVAL_LONG(_0, limitRows);
-	zephir_update_property_this(getThis(), SL("_limitRows"), _0 TSRMLS_CC);
+	ZVAL_LONG(&_0, limitRows);
+	zephir_update_property_zval(this_ptr, SL("_limitRows"), &_0);
 	RETURN_THISW();
 
 }

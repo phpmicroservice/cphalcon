@@ -17,6 +17,7 @@
 #include "kernel/exception.h"
 #include "kernel/operators.h"
 #include "kernel/memory.h"
+#include "kernel/object.h"
 
 
 /**
@@ -30,7 +31,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Filters_Cssmin) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon\\Assets\\Filters, Cssmin, phalcon, assets_filters_cssmin, phalcon_assets_filters_cssmin_method_entry, 0);
 
-	zend_class_implements(phalcon_assets_filters_cssmin_ce TSRMLS_CC, 1, phalcon_assets_filterinterface_ce);
+	zend_class_implements(phalcon_assets_filters_cssmin_ce, 1, phalcon_assets_filterinterface_ce);
 	return SUCCESS;
 
 }
@@ -40,25 +41,29 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Filters_Cssmin) {
  */
 PHP_METHOD(Phalcon_Assets_Filters_Cssmin, filter) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *content_param = NULL;
-	zval *content = NULL;
+	zval content;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&content);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &content_param);
 
 	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
-		zephir_get_strval(content, content_param);
+		zephir_get_strval(&content, content_param);
 	} else {
-		ZEPHIR_INIT_VAR(content);
-		ZVAL_EMPTY_STRING(content);
+		ZEPHIR_INIT_VAR(&content);
+		ZVAL_EMPTY_STRING(&content);
 	}
 
 
-	phalcon_cssmin(return_value, content TSRMLS_CC);
+	phalcon_cssmin(return_value, &content TSRMLS_CC);
 	RETURN_MM();
 
 }

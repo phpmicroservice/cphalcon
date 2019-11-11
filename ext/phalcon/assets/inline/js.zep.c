@@ -13,9 +13,10 @@
 
 #include "kernel/main.h"
 #include "kernel/operators.h"
-#include "kernel/memory.h"
 #include "kernel/array.h"
+#include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/object.h"
 
 
 /**
@@ -40,43 +41,52 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Inline_Js) {
  */
 PHP_METHOD(Phalcon_Assets_Inline_Js, __construct) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zephir_fcall_cache_entry *_0 = NULL;
+	zephir_fcall_cache_entry *_1 = NULL;
 	zend_bool filter;
-	zval *content_param = NULL, *filter_param = NULL, *attributes = NULL, *_1, *_2;
-	zval *content = NULL;
+	zval *content_param = NULL, *filter_param = NULL, *attributes = NULL, attributes_sub, __$null, _0$$3, _2, _3;
+	zval content;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&content);
+	ZVAL_UNDEF(&attributes_sub);
+	ZVAL_NULL(&__$null);
+	ZVAL_UNDEF(&_0$$3);
+	ZVAL_UNDEF(&_2);
+	ZVAL_UNDEF(&_3);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &content_param, &filter_param, &attributes);
 
-	zephir_get_strval(content, content_param);
+	zephir_get_strval(&content, content_param);
 	if (!filter_param) {
 		filter = 1;
 	} else {
 		filter = zephir_get_boolval(filter_param);
 	}
 	if (!attributes) {
-		ZEPHIR_CPY_WRT(attributes, ZEPHIR_GLOBAL(global_null));
+		attributes = &attributes_sub;
+		ZEPHIR_CPY_WRT(attributes, &__$null);
 	} else {
 		ZEPHIR_SEPARATE_PARAM(attributes);
 	}
 
 
 	if (Z_TYPE_P(attributes) == IS_NULL) {
-		ZEPHIR_INIT_NVAR(attributes);
-		zephir_create_array(attributes, 1, 0 TSRMLS_CC);
-		add_assoc_stringl_ex(attributes, SS("type"), SL("text/javascript"), 1);
+		ZEPHIR_INIT_VAR(&_0$$3);
+		zephir_create_array(&_0$$3, 1, 0);
+		add_assoc_stringl_ex(&_0$$3, SL("type"), SL("text/javascript"));
+		ZEPHIR_CPY_WRT(attributes, &_0$$3);
 	}
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_STRING(_1, "js", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_INIT_VAR(_2);
+	ZEPHIR_INIT_VAR(&_2);
+	ZVAL_STRING(&_2, "js");
 	if (filter) {
-		ZVAL_BOOL(_2, 1);
+		ZVAL_BOOL(&_3, 1);
 	} else {
-		ZVAL_BOOL(_2, 0);
+		ZVAL_BOOL(&_3, 0);
 	}
-	ZEPHIR_CALL_PARENT(NULL, phalcon_assets_inline_js_ce, getThis(), "__construct", &_0, 109, _1, content, _2, attributes);
-	zephir_check_temp_parameter(_1);
+	ZEPHIR_CALL_PARENT(NULL, phalcon_assets_inline_js_ce, getThis(), "__construct", &_1, 0, &_2, &content, &_3, attributes);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

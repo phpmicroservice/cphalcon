@@ -41,9 +41,9 @@ ZEPHIR_INIT_CLASS(Phalcon_Annotations_Adapter_Apc) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Phalcon\\Annotations\\Adapter, Apc, phalcon, annotations_adapter_apc, phalcon_annotations_adapter_ce, phalcon_annotations_adapter_apc_method_entry, 0);
 
-	zend_declare_property_string(phalcon_annotations_adapter_apc_ce, SL("_prefix"), "", ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_string(phalcon_annotations_adapter_apc_ce, SL("_prefix"), "", ZEND_ACC_PROTECTED);
 
-	zend_declare_property_long(phalcon_annotations_adapter_apc_ce, SL("_ttl"), 172800, ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_long(phalcon_annotations_adapter_apc_ce, SL("_ttl"), 172800, ZEND_ACC_PROTECTED);
 
 	return SUCCESS;
 
@@ -56,21 +56,28 @@ ZEPHIR_INIT_CLASS(Phalcon_Annotations_Adapter_Apc) {
  */
 PHP_METHOD(Phalcon_Annotations_Adapter_Apc, __construct) {
 
-	zval *options = NULL, *prefix = NULL, *ttl = NULL;
+	zval *options = NULL, options_sub, __$null, prefix, ttl;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 0, 1, &options);
+	ZVAL_UNDEF(&options_sub);
+	ZVAL_NULL(&__$null);
+	ZVAL_UNDEF(&prefix);
+	ZVAL_UNDEF(&ttl);
+
+	zephir_fetch_params_without_memory_grow(0, 1, &options);
 
 	if (!options) {
-		options = ZEPHIR_GLOBAL(global_null);
+		options = &options_sub;
+		options = &__$null;
 	}
 
 
 	if (Z_TYPE_P(options) == IS_ARRAY) {
-		if (zephir_array_isset_string_fetch(&prefix, options, SS("prefix"), 1 TSRMLS_CC)) {
-			zephir_update_property_this(getThis(), SL("_prefix"), prefix TSRMLS_CC);
+		if (zephir_array_isset_string_fetch(&prefix, options, SL("prefix"), 1)) {
+			zephir_update_property_zval(this_ptr, SL("_prefix"), &prefix);
 		}
-		if (zephir_array_isset_string_fetch(&ttl, options, SS("lifetime"), 1 TSRMLS_CC)) {
-			zephir_update_property_this(getThis(), SL("_ttl"), ttl TSRMLS_CC);
+		if (zephir_array_isset_string_fetch(&ttl, options, SL("lifetime"), 1)) {
+			zephir_update_property_zval(this_ptr, SL("_ttl"), &ttl);
 		}
 	}
 
@@ -81,31 +88,38 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Apc, __construct) {
  */
 PHP_METHOD(Phalcon_Annotations_Adapter_Apc, read) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *_0, *_1, *_2;
-	zval *key = NULL;
+	zval *key_param = NULL, _0, _1, _2;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1);
+	ZVAL_UNDEF(&_2);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_INIT_VAR(_0);
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("_prefix"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_2);
-	ZEPHIR_CONCAT_SVV(_2, "_PHAN", _1, key);
-	zephir_fast_strtolower(_0, _2);
-	ZEPHIR_RETURN_CALL_FUNCTION("apc_fetch", NULL, 90, _0);
+	ZEPHIR_INIT_VAR(&_0);
+	zephir_read_property(&_1, this_ptr, SL("_prefix"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_INIT_VAR(&_2);
+	ZEPHIR_CONCAT_SVV(&_2, "_PHAN", &_1, &key);
+	zephir_fast_strtolower(&_0, &_2);
+	ZEPHIR_RETURN_CALL_FUNCTION("apc_fetch", NULL, 81, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -116,32 +130,41 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Apc, read) {
  */
 PHP_METHOD(Phalcon_Annotations_Adapter_Apc, write) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *data, *_0, *_1, *_2, *_3;
-	zval *key = NULL;
+	zval *key_param = NULL, *data, data_sub, _0, _1, _2, _3;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+	ZVAL_UNDEF(&data_sub);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1);
+	ZVAL_UNDEF(&_2);
+	ZVAL_UNDEF(&_3);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &key_param, &data);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_INIT_VAR(_0);
-	_1 = zephir_fetch_nproperty_this(this_ptr, SL("_prefix"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_2);
-	ZEPHIR_CONCAT_SVV(_2, "_PHAN", _1, key);
-	zephir_fast_strtolower(_0, _2);
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("_ttl"), PH_NOISY_CC);
-	ZEPHIR_RETURN_CALL_FUNCTION("apc_store", NULL, 91, _0, data, _3);
+	ZEPHIR_INIT_VAR(&_0);
+	zephir_read_property(&_1, this_ptr, SL("_prefix"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_INIT_VAR(&_2);
+	ZEPHIR_CONCAT_SVV(&_2, "_PHAN", &_1, &key);
+	zephir_fast_strtolower(&_0, &_2);
+	zephir_read_property(&_3, this_ptr, SL("_ttl"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_RETURN_CALL_FUNCTION("apc_store", NULL, 82, &_0, data, &_3);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -45,7 +45,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Cli_Task) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Phalcon\\Cli, Task, phalcon, cli_task, phalcon_di_injectable_ce, phalcon_cli_task_method_entry, 0);
 
-	zend_class_implements(phalcon_cli_task_ce TSRMLS_CC, 1, phalcon_cli_taskinterface_ce);
+	zend_class_implements(phalcon_cli_task_ce, 1, phalcon_cli_taskinterface_ce);
 	return SUCCESS;
 
 }
@@ -55,11 +55,14 @@ ZEPHIR_INIT_CLASS(Phalcon_Cli_Task) {
  */
 PHP_METHOD(Phalcon_Cli_Task, __construct) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
 
 	ZEPHIR_MM_GROW();
 
-	if ((zephir_method_exists_ex(this_ptr, SS("onconstruct") TSRMLS_CC) == SUCCESS)) {
+	if ((zephir_method_exists_ex(this_ptr, ZEND_STRL("onconstruct")) == SUCCESS)) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "onconstruct", NULL, 0);
 		zephir_check_call_status();
 	}

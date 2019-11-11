@@ -38,35 +38,35 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Resource) {
 	/**
 	 * @var string
 	 */
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_type"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_type"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * @var string
 	 */
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_path"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_path"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * @var boolean
 	 */
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_local"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_local"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * @var bool
 	 */
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_filter"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_filter"), ZEND_ACC_PROTECTED);
 
 	/**
 	 * @var array | null
 	 */
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_attributes"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_attributes"), ZEND_ACC_PROTECTED);
 
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_sourcePath"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_sourcePath"), ZEND_ACC_PROTECTED);
 
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_targetPath"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_targetPath"), ZEND_ACC_PROTECTED);
 
-	zend_declare_property_null(phalcon_assets_resource_ce, SL("_targetUri"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_assets_resource_ce, SL("_targetUri"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_assets_resource_ce TSRMLS_CC, 1, phalcon_assets_resourceinterface_ce);
+	zend_class_implements(phalcon_assets_resource_ce, 1, phalcon_assets_resourceinterface_ce);
 	return SUCCESS;
 
 }
@@ -75,7 +75,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Resource) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getType) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_type");
 
@@ -85,7 +86,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getType) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getPath) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_path");
 
@@ -95,7 +97,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getPath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getLocal) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_local");
 
@@ -105,7 +108,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getLocal) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getFilter) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_filter");
 
@@ -115,7 +119,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getFilter) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getAttributes) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_attributes");
 
@@ -123,7 +128,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getAttributes) {
 
 PHP_METHOD(Phalcon_Assets_Resource, getSourcePath) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_sourcePath");
 
@@ -131,7 +137,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getSourcePath) {
 
 PHP_METHOD(Phalcon_Assets_Resource, getTargetPath) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_targetPath");
 
@@ -139,7 +146,8 @@ PHP_METHOD(Phalcon_Assets_Resource, getTargetPath) {
 
 PHP_METHOD(Phalcon_Assets_Resource, getTargetUri) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_targetUri");
 
@@ -156,15 +164,24 @@ PHP_METHOD(Phalcon_Assets_Resource, getTargetUri) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, __construct) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_bool local, filter;
-	zval *type_param = NULL, *path_param = NULL, *local_param = NULL, *filter_param = NULL, *attributes = NULL;
-	zval *type = NULL, *path = NULL;
+	zval *type_param = NULL, *path_param = NULL, *local_param = NULL, *filter_param = NULL, *attributes = NULL, attributes_sub, __$true, __$false, __$null;
+	zval type, path;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&type);
+	ZVAL_UNDEF(&path);
+	ZVAL_UNDEF(&attributes_sub);
+	ZVAL_BOOL(&__$true, 1);
+	ZVAL_BOOL(&__$false, 0);
+	ZVAL_NULL(&__$null);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 3, &type_param, &path_param, &local_param, &filter_param, &attributes);
 
-	zephir_get_strval(type, type_param);
-	zephir_get_strval(path, path_param);
+	zephir_get_strval(&type, type_param);
+	zephir_get_strval(&path, path_param);
 	if (!local_param) {
 		local = 1;
 	} else {
@@ -176,24 +193,25 @@ PHP_METHOD(Phalcon_Assets_Resource, __construct) {
 		filter = zephir_get_boolval(filter_param);
 	}
 	if (!attributes) {
-		attributes = ZEPHIR_GLOBAL(global_null);
+		attributes = &attributes_sub;
+		attributes = &__$null;
 	}
 
 
-	zephir_update_property_this(getThis(), SL("_type"), type TSRMLS_CC);
-	zephir_update_property_this(getThis(), SL("_path"), path TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_type"), &type);
+	zephir_update_property_zval(this_ptr, SL("_path"), &path);
 	if (local) {
-		zephir_update_property_this(getThis(), SL("_local"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_local"), &__$true);
 	} else {
-		zephir_update_property_this(getThis(), SL("_local"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_local"), &__$false);
 	}
 	if (filter) {
-		zephir_update_property_this(getThis(), SL("_filter"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_filter"), &__$true);
 	} else {
-		zephir_update_property_this(getThis(), SL("_filter"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_filter"), &__$false);
 	}
 	if (Z_TYPE_P(attributes) == IS_ARRAY) {
-		zephir_update_property_this(getThis(), SL("_attributes"), attributes TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_attributes"), attributes);
 	}
 	ZEPHIR_MM_RESTORE();
 
@@ -204,16 +222,20 @@ PHP_METHOD(Phalcon_Assets_Resource, __construct) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setType) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *type_param = NULL;
-	zval *type = NULL;
+	zval type;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&type);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &type_param);
 
-	zephir_get_strval(type, type_param);
+	zephir_get_strval(&type, type_param);
 
 
-	zephir_update_property_this(getThis(), SL("_type"), type TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_type"), &type);
 	RETURN_THIS();
 
 }
@@ -223,16 +245,20 @@ PHP_METHOD(Phalcon_Assets_Resource, setType) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setPath) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *path_param = NULL;
-	zval *path = NULL;
+	zval path;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&path);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &path_param);
 
-	zephir_get_strval(path, path_param);
+	zephir_get_strval(&path, path_param);
 
 
-	zephir_update_property_this(getThis(), SL("_path"), path TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_path"), &path);
 	RETURN_THIS();
 
 }
@@ -242,18 +268,22 @@ PHP_METHOD(Phalcon_Assets_Resource, setPath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setLocal) {
 
-	zval *local_param = NULL;
+	zval *local_param = NULL, __$true, __$false;
 	zend_bool local;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &local_param);
+	ZVAL_BOOL(&__$true, 1);
+	ZVAL_BOOL(&__$false, 0);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &local_param);
 
 	local = zephir_get_boolval(local_param);
 
 
 	if (local) {
-		zephir_update_property_this(getThis(), SL("_local"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_local"), &__$true);
 	} else {
-		zephir_update_property_this(getThis(), SL("_local"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_local"), &__$false);
 	}
 	RETURN_THISW();
 
@@ -264,18 +294,22 @@ PHP_METHOD(Phalcon_Assets_Resource, setLocal) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setFilter) {
 
-	zval *filter_param = NULL;
+	zval *filter_param = NULL, __$true, __$false;
 	zend_bool filter;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &filter_param);
+	ZVAL_BOOL(&__$true, 1);
+	ZVAL_BOOL(&__$false, 0);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &filter_param);
 
 	filter = zephir_get_boolval(filter_param);
 
 
 	if (filter) {
-		zephir_update_property_this(getThis(), SL("_filter"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_filter"), &__$true);
 	} else {
-		zephir_update_property_this(getThis(), SL("_filter"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, SL("_filter"), &__$false);
 	}
 	RETURN_THISW();
 
@@ -286,16 +320,20 @@ PHP_METHOD(Phalcon_Assets_Resource, setFilter) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setAttributes) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *attributes_param = NULL;
-	zval *attributes = NULL;
+	zval attributes;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&attributes);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &attributes_param);
 
-	zephir_get_arrval(attributes, attributes_param);
+	zephir_get_arrval(&attributes, attributes_param);
 
 
-	zephir_update_property_this(getThis(), SL("_attributes"), attributes TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_attributes"), &attributes);
 	RETURN_THIS();
 
 }
@@ -305,16 +343,20 @@ PHP_METHOD(Phalcon_Assets_Resource, setAttributes) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setTargetUri) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *targetUri_param = NULL;
-	zval *targetUri = NULL;
+	zval targetUri;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&targetUri);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &targetUri_param);
 
-	zephir_get_strval(targetUri, targetUri_param);
+	zephir_get_strval(&targetUri, targetUri_param);
 
 
-	zephir_update_property_this(getThis(), SL("_targetUri"), targetUri TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_targetUri"), &targetUri);
 	RETURN_THIS();
 
 }
@@ -324,16 +366,20 @@ PHP_METHOD(Phalcon_Assets_Resource, setTargetUri) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setSourcePath) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sourcePath_param = NULL;
-	zval *sourcePath = NULL;
+	zval sourcePath;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&sourcePath);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &sourcePath_param);
 
-	zephir_get_strval(sourcePath, sourcePath_param);
+	zephir_get_strval(&sourcePath, sourcePath_param);
 
 
-	zephir_update_property_this(getThis(), SL("_sourcePath"), sourcePath TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_sourcePath"), &sourcePath);
 	RETURN_THIS();
 
 }
@@ -343,16 +389,20 @@ PHP_METHOD(Phalcon_Assets_Resource, setSourcePath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, setTargetPath) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *targetPath_param = NULL;
-	zval *targetPath = NULL;
+	zval targetPath;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&targetPath);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &targetPath_param);
 
-	zephir_get_strval(targetPath, targetPath_param);
+	zephir_get_strval(&targetPath, targetPath_param);
 
 
-	zephir_update_property_this(getThis(), SL("_targetPath"), targetPath TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, SL("_targetPath"), &targetPath);
 	RETURN_THIS();
 
 }
@@ -363,57 +413,69 @@ PHP_METHOD(Phalcon_Assets_Resource, setTargetPath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getContent) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *basePath_param = NULL, *sourcePath = NULL, *completePath = NULL, *content = NULL, *_0, *_1$$5, *_2$$5, *_3$$6, *_4$$6;
-	zval *basePath = NULL;
+	zval *basePath_param = NULL, sourcePath, completePath, content, _0, _1$$5, _2$$5, _3$$6, _4$$6;
+	zval basePath;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&basePath);
+	ZVAL_UNDEF(&sourcePath);
+	ZVAL_UNDEF(&completePath);
+	ZVAL_UNDEF(&content);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1$$5);
+	ZVAL_UNDEF(&_2$$5);
+	ZVAL_UNDEF(&_3$$6);
+	ZVAL_UNDEF(&_4$$6);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &basePath_param);
 
 	if (!basePath_param) {
-		ZEPHIR_INIT_VAR(basePath);
-		ZVAL_EMPTY_STRING(basePath);
+		ZEPHIR_INIT_VAR(&basePath);
+		ZVAL_STRING(&basePath, "");
 	} else {
-		zephir_get_strval(basePath, basePath_param);
+		zephir_get_strval(&basePath, basePath_param);
 	}
 
 
-	ZEPHIR_OBS_VAR(sourcePath);
-	zephir_read_property_this(&sourcePath, this_ptr, SL("_sourcePath"), PH_NOISY_CC);
-	if (ZEPHIR_IS_EMPTY(sourcePath)) {
-		ZEPHIR_OBS_NVAR(sourcePath);
-		zephir_read_property_this(&sourcePath, this_ptr, SL("_path"), PH_NOISY_CC);
+	ZEPHIR_OBS_VAR(&sourcePath);
+	zephir_read_property(&sourcePath, this_ptr, SL("_sourcePath"), PH_NOISY_CC);
+	if (ZEPHIR_IS_EMPTY(&sourcePath)) {
+		ZEPHIR_OBS_NVAR(&sourcePath);
+		zephir_read_property(&sourcePath, this_ptr, SL("_path"), PH_NOISY_CC);
 	}
-	ZEPHIR_INIT_VAR(completePath);
-	ZEPHIR_CONCAT_VV(completePath, basePath, sourcePath);
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_local"), PH_NOISY_CC);
-	if (zephir_is_true(_0)) {
-		if (!((zephir_file_exists(completePath TSRMLS_CC) == SUCCESS))) {
-			ZEPHIR_INIT_VAR(_1$$5);
-			object_init_ex(_1$$5, phalcon_assets_exception_ce);
-			ZEPHIR_INIT_VAR(_2$$5);
-			ZEPHIR_CONCAT_SVS(_2$$5, "Resource's content for '", completePath, "' cannot be read");
-			ZEPHIR_CALL_METHOD(NULL, _1$$5, "__construct", NULL, 9, _2$$5);
+	ZEPHIR_INIT_VAR(&completePath);
+	ZEPHIR_CONCAT_VV(&completePath, &basePath, &sourcePath);
+	zephir_read_property(&_0, this_ptr, SL("_local"), PH_NOISY_CC | PH_READONLY);
+	if (zephir_is_true(&_0)) {
+		if (!((zephir_file_exists(&completePath) == SUCCESS))) {
+			ZEPHIR_INIT_VAR(&_1$$5);
+			object_init_ex(&_1$$5, phalcon_assets_exception_ce);
+			ZEPHIR_INIT_VAR(&_2$$5);
+			ZEPHIR_CONCAT_SVS(&_2$$5, "Resource's content for '", &completePath, "' cannot be read");
+			ZEPHIR_CALL_METHOD(NULL, &_1$$5, "__construct", NULL, 4, &_2$$5);
 			zephir_check_call_status();
-			zephir_throw_exception_debug(_1$$5, "phalcon/assets/resource.zep", 183 TSRMLS_CC);
+			zephir_throw_exception_debug(&_1$$5, "phalcon/assets/resource.zep", 183);
 			ZEPHIR_MM_RESTORE();
 			return;
 		}
 	}
-	ZEPHIR_INIT_VAR(content);
-	zephir_file_get_contents(content, completePath TSRMLS_CC);
-	if (ZEPHIR_IS_FALSE_IDENTICAL(content)) {
-		ZEPHIR_INIT_VAR(_3$$6);
-		object_init_ex(_3$$6, phalcon_assets_exception_ce);
-		ZEPHIR_INIT_VAR(_4$$6);
-		ZEPHIR_CONCAT_SVS(_4$$6, "Resource's content for '", completePath, "' cannot be read");
-		ZEPHIR_CALL_METHOD(NULL, _3$$6, "__construct", NULL, 9, _4$$6);
+	ZEPHIR_INIT_VAR(&content);
+	zephir_file_get_contents(&content, &completePath);
+	if (ZEPHIR_IS_FALSE_IDENTICAL(&content)) {
+		ZEPHIR_INIT_VAR(&_3$$6);
+		object_init_ex(&_3$$6, phalcon_assets_exception_ce);
+		ZEPHIR_INIT_VAR(&_4$$6);
+		ZEPHIR_CONCAT_SVS(&_4$$6, "Resource's content for '", &completePath, "' cannot be read");
+		ZEPHIR_CALL_METHOD(NULL, &_3$$6, "__construct", NULL, 4, &_4$$6);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_3$$6, "phalcon/assets/resource.zep", 192 TSRMLS_CC);
+		zephir_throw_exception_debug(&_3$$6, "phalcon/assets/resource.zep", 192);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
-	RETURN_CCTOR(content);
+	RETURN_CCTOR(&content);
 
 }
 
@@ -422,17 +484,21 @@ PHP_METHOD(Phalcon_Assets_Resource, getContent) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getRealTargetUri) {
 
-	zval *targetUri = NULL;
+	zval targetUri;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&targetUri);
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_OBS_VAR(targetUri);
-	zephir_read_property_this(&targetUri, this_ptr, SL("_targetUri"), PH_NOISY_CC);
-	if (ZEPHIR_IS_EMPTY(targetUri)) {
-		ZEPHIR_OBS_NVAR(targetUri);
-		zephir_read_property_this(&targetUri, this_ptr, SL("_path"), PH_NOISY_CC);
+	ZEPHIR_OBS_VAR(&targetUri);
+	zephir_read_property(&targetUri, this_ptr, SL("_targetUri"), PH_NOISY_CC);
+	if (ZEPHIR_IS_EMPTY(&targetUri)) {
+		ZEPHIR_OBS_NVAR(&targetUri);
+		zephir_read_property(&targetUri, this_ptr, SL("_path"), PH_NOISY_CC);
 	}
-	RETURN_CCTOR(targetUri);
+	RETURN_CCTOR(&targetUri);
 
 }
 
@@ -441,36 +507,43 @@ PHP_METHOD(Phalcon_Assets_Resource, getRealTargetUri) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getRealSourcePath) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *basePath_param = NULL, *sourcePath = NULL, *_0, *_1$$4;
-	zval *basePath = NULL;
+	zval *basePath_param = NULL, sourcePath, _0, _1$$4;
+	zval basePath;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&basePath);
+	ZVAL_UNDEF(&sourcePath);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1$$4);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &basePath_param);
 
 	if (!basePath_param) {
-		ZEPHIR_INIT_VAR(basePath);
-		ZVAL_EMPTY_STRING(basePath);
+		ZEPHIR_INIT_VAR(&basePath);
+		ZVAL_STRING(&basePath, "");
 	} else {
-		zephir_get_strval(basePath, basePath_param);
+		zephir_get_strval(&basePath, basePath_param);
 	}
 
 
-	ZEPHIR_OBS_VAR(sourcePath);
-	zephir_read_property_this(&sourcePath, this_ptr, SL("_sourcePath"), PH_NOISY_CC);
-	if (ZEPHIR_IS_EMPTY(sourcePath)) {
-		ZEPHIR_OBS_NVAR(sourcePath);
-		zephir_read_property_this(&sourcePath, this_ptr, SL("_path"), PH_NOISY_CC);
+	ZEPHIR_OBS_VAR(&sourcePath);
+	zephir_read_property(&sourcePath, this_ptr, SL("_sourcePath"), PH_NOISY_CC);
+	if (ZEPHIR_IS_EMPTY(&sourcePath)) {
+		ZEPHIR_OBS_NVAR(&sourcePath);
+		zephir_read_property(&sourcePath, this_ptr, SL("_path"), PH_NOISY_CC);
 	}
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_local"), PH_NOISY_CC);
-	if (zephir_is_true(_0)) {
-		ZEPHIR_INIT_VAR(_1$$4);
-		ZEPHIR_CONCAT_VV(_1$$4, basePath, sourcePath);
-		ZEPHIR_RETURN_CALL_FUNCTION("realpath", NULL, 67, _1$$4);
+	zephir_read_property(&_0, this_ptr, SL("_local"), PH_NOISY_CC | PH_READONLY);
+	if (zephir_is_true(&_0)) {
+		ZEPHIR_INIT_VAR(&_1$$4);
+		ZEPHIR_CONCAT_VV(&_1$$4, &basePath, &sourcePath);
+		ZEPHIR_RETURN_CALL_FUNCTION("realpath", NULL, 60, &_1$$4);
 		zephir_check_call_status();
 		RETURN_MM();
 	}
-	RETURN_CCTOR(sourcePath);
+	RETURN_CCTOR(&sourcePath);
 
 }
 
@@ -479,39 +552,46 @@ PHP_METHOD(Phalcon_Assets_Resource, getRealSourcePath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getRealTargetPath) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *basePath_param = NULL, *targetPath = NULL, *completePath = NULL, *_0;
-	zval *basePath = NULL;
+	zval *basePath_param = NULL, targetPath, completePath, _0;
+	zval basePath;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&basePath);
+	ZVAL_UNDEF(&targetPath);
+	ZVAL_UNDEF(&completePath);
+	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &basePath_param);
 
 	if (!basePath_param) {
-		ZEPHIR_INIT_VAR(basePath);
-		ZVAL_EMPTY_STRING(basePath);
+		ZEPHIR_INIT_VAR(&basePath);
+		ZVAL_STRING(&basePath, "");
 	} else {
-		zephir_get_strval(basePath, basePath_param);
+		zephir_get_strval(&basePath, basePath_param);
 	}
 
 
-	ZEPHIR_OBS_VAR(targetPath);
-	zephir_read_property_this(&targetPath, this_ptr, SL("_targetPath"), PH_NOISY_CC);
-	if (ZEPHIR_IS_EMPTY(targetPath)) {
-		ZEPHIR_OBS_NVAR(targetPath);
-		zephir_read_property_this(&targetPath, this_ptr, SL("_path"), PH_NOISY_CC);
+	ZEPHIR_OBS_VAR(&targetPath);
+	zephir_read_property(&targetPath, this_ptr, SL("_targetPath"), PH_NOISY_CC);
+	if (ZEPHIR_IS_EMPTY(&targetPath)) {
+		ZEPHIR_OBS_NVAR(&targetPath);
+		zephir_read_property(&targetPath, this_ptr, SL("_path"), PH_NOISY_CC);
 	}
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_local"), PH_NOISY_CC);
-	if (zephir_is_true(_0)) {
-		ZEPHIR_INIT_VAR(completePath);
-		ZEPHIR_CONCAT_VV(completePath, basePath, targetPath);
-		if ((zephir_file_exists(completePath TSRMLS_CC) == SUCCESS)) {
-			ZEPHIR_RETURN_CALL_FUNCTION("realpath", NULL, 67, completePath);
+	zephir_read_property(&_0, this_ptr, SL("_local"), PH_NOISY_CC | PH_READONLY);
+	if (zephir_is_true(&_0)) {
+		ZEPHIR_INIT_VAR(&completePath);
+		ZEPHIR_CONCAT_VV(&completePath, &basePath, &targetPath);
+		if ((zephir_file_exists(&completePath) == SUCCESS)) {
+			ZEPHIR_RETURN_CALL_FUNCTION("realpath", NULL, 60, &completePath);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
-		RETURN_CCTOR(completePath);
+		RETURN_CCTOR(&completePath);
 	}
-	RETURN_CCTOR(targetPath);
+	RETURN_CCTOR(&targetPath);
 
 }
 
@@ -520,8 +600,14 @@ PHP_METHOD(Phalcon_Assets_Resource, getRealTargetPath) {
  */
 PHP_METHOD(Phalcon_Assets_Resource, getResourceKey) {
 
-	zval *key = NULL, *_0 = NULL, *_1 = NULL;
+	zval key, _0, _1;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1);
 
 	ZEPHIR_MM_GROW();
 
@@ -529,9 +615,9 @@ PHP_METHOD(Phalcon_Assets_Resource, getResourceKey) {
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(&_1, this_ptr, "getpath", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_INIT_VAR(key);
-	ZEPHIR_CONCAT_VSV(key, _0, ":", _1);
-	zephir_md5(return_value, key);
+	ZEPHIR_INIT_VAR(&key);
+	ZEPHIR_CONCAT_VSV(&key, &_0, ":", &_1);
+	zephir_md5(return_value, &key);
 	RETURN_MM();
 
 }

@@ -59,7 +59,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Controller) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Phalcon\\Mvc, Controller, phalcon, mvc_controller, phalcon_di_injectable_ce, phalcon_mvc_controller_method_entry, ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
 
-	zend_class_implements(phalcon_mvc_controller_ce TSRMLS_CC, 1, phalcon_mvc_controllerinterface_ce);
+	zend_class_implements(phalcon_mvc_controller_ce, 1, phalcon_mvc_controllerinterface_ce);
 	return SUCCESS;
 
 }
@@ -69,11 +69,14 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Controller) {
  */
 PHP_METHOD(Phalcon_Mvc_Controller, __construct) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
 
 	ZEPHIR_MM_GROW();
 
-	if ((zephir_method_exists_ex(this_ptr, SS("onconstruct") TSRMLS_CC) == SUCCESS)) {
+	if ((zephir_method_exists_ex(this_ptr, ZEND_STRL("onconstruct")) == SUCCESS)) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "onconstruct", NULL, 0);
 		zephir_check_call_status();
 	}

@@ -31,10 +31,10 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_Row) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon\\Mvc\\Model, Row, phalcon, mvc_model_row, phalcon_mvc_model_row_method_entry, 0);
 
-	zend_class_implements(phalcon_mvc_model_row_ce TSRMLS_CC, 1, phalcon_mvc_entityinterface_ce);
-	zend_class_implements(phalcon_mvc_model_row_ce TSRMLS_CC, 1, phalcon_mvc_model_resultinterface_ce);
-	zend_class_implements(phalcon_mvc_model_row_ce TSRMLS_CC, 1, zend_ce_arrayaccess);
-	zend_class_implements(phalcon_mvc_model_row_ce TSRMLS_CC, 1, zephir_get_internal_ce(SS("jsonserializable") TSRMLS_CC));
+	zend_class_implements(phalcon_mvc_model_row_ce, 1, phalcon_mvc_entityinterface_ce);
+	zend_class_implements(phalcon_mvc_model_row_ce, 1, phalcon_mvc_model_resultinterface_ce);
+	zend_class_implements(phalcon_mvc_model_row_ce, 1, zend_ce_arrayaccess);
+	zend_class_implements(phalcon_mvc_model_row_ce, 1, zephir_get_internal_ce(SL("jsonserializable")));
 	return SUCCESS;
 
 }
@@ -46,8 +46,10 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, setDirtyState) {
 
 	zval *dirtyState_param = NULL;
 	zend_long dirtyState;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &dirtyState_param);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &dirtyState_param);
 
 	dirtyState = zephir_get_intval(dirtyState_param);
 
@@ -64,13 +66,16 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, setDirtyState) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, offsetExists) {
 
-	zval *index;
+	zval *index, index_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &index);
+	ZVAL_UNDEF(&index_sub);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &index);
 
 
 
-	RETURN_BOOL(zephir_isset_property_zval(this_ptr, index TSRMLS_CC));
+	RETURN_BOOL(zephir_isset_property_zval(this_ptr, index));
 
 }
 
@@ -82,16 +87,21 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, offsetExists) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, offsetGet) {
 
-	zval *index, *value = NULL;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *index, index_sub, value;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&index_sub);
+	ZVAL_UNDEF(&value);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &index);
 
 
 
-	ZEPHIR_OBS_VAR(value);
+	ZEPHIR_OBS_VAR(&value);
 	if (zephir_fetch_property_zval(&value, this_ptr, index, PH_SILENT_CC)) {
-		RETURN_CCTOR(value);
+		RETURN_CCTOR(&value);
 	}
 	ZEPHIR_THROW_EXCEPTION_DEBUG_STR(phalcon_mvc_model_exception_ce, "The index does not exist in the row", "phalcon/mvc/model/row.zep", 67);
 	return;
@@ -106,9 +116,13 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, offsetGet) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, offsetSet) {
 
-	zval *index, *value;
+	zval *index, index_sub, *value, value_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 2, 0, &index, &value);
+	ZVAL_UNDEF(&index_sub);
+	ZVAL_UNDEF(&value_sub);
+
+	zephir_fetch_params_without_memory_grow(2, 0, &index, &value);
 
 
 
@@ -124,9 +138,12 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, offsetSet) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, offsetUnset) {
 
-	zval *offset;
+	zval *offset, offset_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &offset);
+	ZVAL_UNDEF(&offset_sub);
+
+	zephir_fetch_params_without_memory_grow(1, 0, &offset);
 
 
 
@@ -147,16 +164,21 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, offsetUnset) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, readAttribute) {
 
-	zval *attribute, *value = NULL;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *attribute, attribute_sub, value;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&attribute_sub);
+	ZVAL_UNDEF(&value);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &attribute);
 
 
 
-	ZEPHIR_OBS_VAR(value);
+	ZEPHIR_OBS_VAR(&value);
 	if (zephir_fetch_property_zval(&value, this_ptr, attribute, PH_SILENT_CC)) {
-		RETURN_CTOR(value);
+		RETURN_CTOR(&value);
 	}
 	RETURN_MM_NULL();
 
@@ -174,25 +196,30 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, readAttribute) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, writeAttribute) {
 
-	zval *attribute_param = NULL, *value;
-	zval *attribute = NULL;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *attribute_param = NULL, *value, value_sub;
+	zval attribute;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&attribute);
+	ZVAL_UNDEF(&value_sub);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &attribute_param, &value);
 
 	if (UNEXPECTED(Z_TYPE_P(attribute_param) != IS_STRING && Z_TYPE_P(attribute_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'attribute' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'attribute' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(attribute_param) == IS_STRING)) {
-		zephir_get_strval(attribute, attribute_param);
+		zephir_get_strval(&attribute, attribute_param);
 	} else {
-		ZEPHIR_INIT_VAR(attribute);
-		ZVAL_EMPTY_STRING(attribute);
+		ZEPHIR_INIT_VAR(&attribute);
+		ZVAL_EMPTY_STRING(&attribute);
 	}
 
 
-	zephir_update_property_zval_zval(getThis(), attribute, value TSRMLS_CC);
+	zephir_update_property_zval_zval(this_ptr, &attribute, value);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -204,11 +231,14 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, writeAttribute) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, toArray) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_RETURN_CALL_FUNCTION("get_object_vars", NULL, 22, this_ptr);
+	ZEPHIR_RETURN_CALL_FUNCTION("get_object_vars", NULL, 17, this_ptr);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -221,7 +251,10 @@ PHP_METHOD(Phalcon_Mvc_Model_Row, toArray) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Row, jsonSerialize) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
 
 	ZEPHIR_MM_GROW();
 
