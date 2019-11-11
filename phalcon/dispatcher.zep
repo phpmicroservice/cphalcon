@@ -437,7 +437,7 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 			actionName, params, eventsManager,
 			actionSuffix, handlerClass, status, actionMethod,
 			modelBinder, bindCacheKey,
-			wasFresh, e;
+			wasFresh, e, handlerLasting;
 
 		let dependencyInjector = <DiInterface> this->_dependencyInjector;
 		if typeof dependencyInjector != "object" {
