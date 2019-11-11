@@ -54,17 +54,17 @@ interface ModelInterface
 	/**
 	 * Sets both read/write connection services
 	 */
-	public function setConnectionService(string connectionService) -> void;
+	public function setConnectionService(string connectionService) -> <Model>;
 
 	/**
 	 * Sets the DependencyInjection connection service used to write data
 	 */
-	public function setWriteConnectionService(string connectionService) -> void;
+	public function setWriteConnectionService(string connectionService) -> <Model>;
 
 	/**
 	 * Sets the DependencyInjection connection service used to read data
 	 */
-	public function setReadConnectionService(string connectionService) -> void;
+	public function setReadConnectionService(string connectionService) -> <Model>;
 
 	/**
 	 * Returns DependencyInjection connection service used to read data

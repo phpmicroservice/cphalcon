@@ -38,20 +38,21 @@ PHP_METHOD(Phalcon_Flash_Direct, message) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *type_param = NULL, *message, message_sub;
-	zval type;
+	zval *type_param = NULL, *message_param = NULL;
+	zval type, message;
 	zval *this_ptr = getThis();
 
 	ZVAL_UNDEF(&type);
-	ZVAL_UNDEF(&message_sub);
+	ZVAL_UNDEF(&message);
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 0, &type_param, &message);
+	zephir_fetch_params(1, 2, 0, &type_param, &message_param);
 
 	zephir_get_strval(&type, type_param);
+	zephir_get_strval(&message, message_param);
 
 
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "outputmessage", NULL, 0, &type, message);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "outputmessage", NULL, 0, &type, &message);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -11,17 +11,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_settr
 	ZEND_ARG_OBJ_INFO(0, transaction, Phalcon\\Mvc\\Model\\TransactionInterface, 0)
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else
@@ -29,17 +23,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else
@@ -47,17 +35,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionserv
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setreadconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else

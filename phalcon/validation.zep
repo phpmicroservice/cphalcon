@@ -198,6 +198,23 @@ class Validation extends Injectable implements ValidationInterface
 	}
 
 	/**
+	 * Validate a set of data according to a set of rules
+	 *
+	 * @param array|object data
+	 * @param object entity
+	 * @return boolean
+	 */
+	public function check(var data = null, var entity = null) -> boolean
+	{
+		
+        this->{"validate"}(data, entity);
+        if (this->_messages->count()) {
+            return false;
+        }
+        return true;
+	}
+
+	/**
 	 * Adds a validator to a field
 	 */
 	public function add(var field, <ValidatorInterface> validator) -> <Validation>

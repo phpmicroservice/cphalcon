@@ -7,6 +7,7 @@ PHP_METHOD(Phalcon_Validation, getData);
 PHP_METHOD(Phalcon_Validation, setValidators);
 PHP_METHOD(Phalcon_Validation, __construct);
 PHP_METHOD(Phalcon_Validation, validate);
+PHP_METHOD(Phalcon_Validation, check);
 PHP_METHOD(Phalcon_Validation, add);
 PHP_METHOD(Phalcon_Validation, rule);
 PHP_METHOD(Phalcon_Validation, rules);
@@ -38,6 +39,15 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_validation_validate, 0, 0, Phalcon\\Validation\\Message\\Group, 0)
 #else
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validate, 0, 0, IS_OBJECT, "Phalcon\\Validation\\Message\\Group", 0)
+#endif
+	ZEND_ARG_INFO(0, data)
+	ZEND_ARG_INFO(0, entity)
+ZEND_END_ARG_INFO()
+
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_check, 0, 0, _IS_BOOL, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_check, 0, 0, _IS_BOOL, NULL, 0)
 #endif
 	ZEND_ARG_INFO(0, data)
 	ZEND_ARG_INFO(0, entity)
@@ -172,6 +182,7 @@ ZEPHIR_INIT_FUNCS(phalcon_validation_method_entry) {
 	PHP_ME(Phalcon_Validation, setValidators, arginfo_phalcon_validation_setvalidators, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, __construct, arginfo_phalcon_validation___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Phalcon_Validation, validate, arginfo_phalcon_validation_validate, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation, check, arginfo_phalcon_validation_check, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, add, arginfo_phalcon_validation_add, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, rule, arginfo_phalcon_validation_rule, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, rules, arginfo_phalcon_validation_rules, ZEND_ACC_PUBLIC)

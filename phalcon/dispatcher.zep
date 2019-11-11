@@ -56,7 +56,7 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 
 	protected _handlerName = null;
 
-	protected _actionName = null;
+	protected _actionName = "";
 
 	protected _params = [];
 
@@ -231,7 +231,7 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 	/**
 	 * Gets the latest dispatched action name
 	 */
-	public function getActionName() -> boolean
+	public function getActionName() -> string
 	{
 		return this->_actionName;
 	}

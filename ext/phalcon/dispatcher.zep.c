@@ -49,7 +49,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Dispatcher) {
 
 	zend_declare_property_null(phalcon_dispatcher_ce, SL("_handlerName"), ZEND_ACC_PROTECTED);
 
-	zend_declare_property_null(phalcon_dispatcher_ce, SL("_actionName"), ZEND_ACC_PROTECTED);
+	zend_declare_property_string(phalcon_dispatcher_ce, SL("_actionName"), "", ZEND_ACC_PROTECTED);
 
 	zend_declare_property_null(phalcon_dispatcher_ce, SL("_params"), ZEND_ACC_PROTECTED);
 

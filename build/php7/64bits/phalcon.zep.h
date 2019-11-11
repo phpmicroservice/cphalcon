@@ -6371,17 +6371,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_flashinterface_warning, 0, 0, 1)
 	ZEND_ARG_INFO(0, message)
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flashinterface_message, 0, 2, IS_VOID, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flashinterface_message, 0, 2, IS_VOID, NULL, 0)
-#endif
-#else
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_flashinterface_message, 0, 0, 2)
-#define arginfo_phalcon_flashinterface_message NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, type, IS_STRING, 0)
 #else
@@ -8210,9 +8200,9 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_dispatcher_setactionname, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_dispatcher_getactionname, 0, 0, _IS_BOOL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_dispatcher_getactionname, 0, 0, IS_STRING, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_dispatcher_getactionname, 0, 0, _IS_BOOL, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_dispatcher_getactionname, 0, 0, IS_STRING, NULL, 0)
 #endif
 ZEND_END_ARG_INFO()
 
@@ -9326,17 +9316,11 @@ zend_class_entry *phalcon_mvc_routerinterface_ce;
 
 ZEPHIR_INIT_CLASS(Phalcon_Mvc_RouterInterface);
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 1, Phalcon\\Mvc\\RouterInterface, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\RouterInterface", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 0, 1)
-#define arginfo_phalcon_mvc_routerinterface_setdefaultmodule NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, moduleName, IS_STRING, 0)
 #else
@@ -9344,17 +9328,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultmodule, 0, 
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller, 0, 1, Phalcon\\Mvc\\RouterInterface, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\RouterInterface", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller, 0, 0, 1)
-#define arginfo_phalcon_mvc_routerinterface_setdefaultcontroller NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, controllerName, IS_STRING, 0)
 #else
@@ -9362,17 +9340,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultcontroller,
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 1, Phalcon\\Mvc\\RouterInterface, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\RouterInterface", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 0, 1)
-#define arginfo_phalcon_mvc_routerinterface_setdefaultaction NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, actionName, IS_STRING, 0)
 #else
@@ -9380,17 +9352,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaultaction, 0, 
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaults, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaults, 0, 1, Phalcon\\Mvc\\RouterInterface, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaults, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaults, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\RouterInterface", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_routerinterface_setdefaults, 0, 0, 1)
-#define arginfo_phalcon_mvc_routerinterface_setdefaults NULL
-#endif
-
 	ZEND_ARG_ARRAY_INFO(0, defaults, 0)
 ZEND_END_ARG_INFO()
 
@@ -13220,17 +13186,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_settr
 	ZEND_ARG_OBJ_INFO(0, transaction, Phalcon\\Mvc\\Model\\TransactionInterface, 0)
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else
@@ -13238,17 +13198,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setconnectionservice, 
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setwriteconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else
@@ -13256,17 +13210,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setwriteconnectionserv
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, Phalcon\\Mvc\\Model, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Model", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_modelinterface_setreadconnectionservice, 0, 0, 1)
-#define arginfo_phalcon_mvc_modelinterface_setreadconnectionservice NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, connectionService, IS_STRING, 0)
 #else
@@ -13685,7 +13633,17 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_getdefaults, 
 #endif
 ZEND_END_ARG_INFO()
 
+#if PHP_VERSION_ID >= 70100
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_handle, 0, 0, IS_VOID, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_handle, 0, 0, IS_VOID, NULL, 0)
+#endif
+#else
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_router_handle, 0, 0, 0)
+#define arginfo_phalcon_mvc_router_handle NULL
+#endif
+
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, uri, IS_STRING, 1)
 #else
@@ -14254,17 +14212,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterfac
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_via, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_via, 0, 1, Phalcon\\Mvc\\Router\\Route, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_via, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_via, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Router\\Route", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_via, 0, 0, 1)
-#define arginfo_phalcon_mvc_router_routeinterface_via NULL
-#endif
-
 	ZEND_ARG_INFO(0, httpMethods)
 ZEND_END_ARG_INFO()
 
@@ -14294,17 +14246,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterfac
 #endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
 #if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_setname, 0, 1, IS_VOID, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_setname, 0, 1, Phalcon\\Mvc\\Router\\Route, 0)
 #else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_setname, 0, 1, IS_VOID, NULL, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_setname, 0, 1, IS_OBJECT, "Phalcon\\Mvc\\Router\\Route", 0)
 #endif
-#else
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_router_routeinterface_setname, 0, 0, 1)
-#define arginfo_phalcon_mvc_router_routeinterface_setname NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
 #else
@@ -23174,17 +23120,17 @@ ZEPHIR_INIT_CLASS(Phalcon_Flash_Direct);
 static PHP_METHOD(Phalcon_Flash_Direct, message);
 static PHP_METHOD(Phalcon_Flash_Direct, output);
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flash_direct_message, 0, 2, IS_STRING, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flash_direct_message, 0, 2, IS_STRING, NULL, 0)
-#endif
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_flash_direct_message, 0, 0, 2)
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, type, IS_STRING, 0)
 #else
 	ZEND_ARG_INFO(0, type)
 #endif
+#if PHP_VERSION_ID >= 70200
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
+#else
 	ZEND_ARG_INFO(0, message)
+#endif
 ZEND_END_ARG_INFO()
 
 #if PHP_VERSION_ID >= 70100
@@ -23249,17 +23195,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flash_session__setsessio
 	ZEND_ARG_ARRAY_INFO(0, messages, 0)
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70100
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flash_session_message, 0, 2, IS_VOID, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_flash_session_message, 0, 2, IS_VOID, NULL, 0)
-#endif
-#else
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_flash_session_message, 0, 0, 2)
-#define arginfo_phalcon_flash_session_message NULL
-#endif
-
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, type, IS_STRING, 0)
 #else
@@ -28607,7 +28543,17 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_dispatcher__handleexception, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, exception, Exception, 0)
 ZEND_END_ARG_INFO()
 
+#if PHP_VERSION_ID >= 70100
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_dispatcher_forward, 0, 1, IS_VOID, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_dispatcher_forward, 0, 1, IS_VOID, NULL, 0)
+#endif
+#else
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_dispatcher_forward, 0, 0, 1)
+#define arginfo_phalcon_mvc_dispatcher_forward NULL
+#endif
+
 	ZEND_ARG_INFO(0, forward)
 ZEND_END_ARG_INFO()
 
@@ -34687,7 +34633,17 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_annotations_a
 #endif
 ZEND_END_ARG_INFO()
 
+#if PHP_VERSION_ID >= 70100
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_annotations_handle, 0, 0, IS_VOID, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_router_annotations_handle, 0, 0, IS_VOID, NULL, 0)
+#endif
+#else
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_router_annotations_handle, 0, 0, 0)
+#define arginfo_phalcon_mvc_router_annotations_handle NULL
+#endif
+
 #if PHP_VERSION_ID >= 70200
 	ZEND_ARG_TYPE_INFO(0, uri, IS_STRING, 1)
 #else
@@ -39906,6 +39862,7 @@ static PHP_METHOD(Phalcon_Validation, getData);
 static PHP_METHOD(Phalcon_Validation, setValidators);
 static PHP_METHOD(Phalcon_Validation, __construct);
 static PHP_METHOD(Phalcon_Validation, validate);
+static PHP_METHOD(Phalcon_Validation, check);
 static PHP_METHOD(Phalcon_Validation, add);
 static PHP_METHOD(Phalcon_Validation, rule);
 static PHP_METHOD(Phalcon_Validation, rules);
@@ -39937,6 +39894,15 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_validation_validate, 0, 0, Phalcon\\Validation\\Message\\Group, 0)
 #else
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validate, 0, 0, IS_OBJECT, "Phalcon\\Validation\\Message\\Group", 0)
+#endif
+	ZEND_ARG_INFO(0, data)
+	ZEND_ARG_INFO(0, entity)
+ZEND_END_ARG_INFO()
+
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_check, 0, 0, _IS_BOOL, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_check, 0, 0, _IS_BOOL, NULL, 0)
 #endif
 	ZEND_ARG_INFO(0, data)
 	ZEND_ARG_INFO(0, entity)
@@ -40071,6 +40037,7 @@ ZEPHIR_INIT_FUNCS(phalcon_validation_method_entry) {
 	PHP_ME(Phalcon_Validation, setValidators, arginfo_phalcon_validation_setvalidators, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, __construct, arginfo_phalcon_validation___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Phalcon_Validation, validate, arginfo_phalcon_validation_validate, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation, check, arginfo_phalcon_validation_check, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, add, arginfo_phalcon_validation_add, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, rule, arginfo_phalcon_validation_rule, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation, rules, arginfo_phalcon_validation_rules, ZEND_ACC_PUBLIC)

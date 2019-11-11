@@ -128,5 +128,5 @@ interface DispatcherInterface
 	 *
 	 * @param array forward
 	 */
-	public function forward(forward);
+	public function forward(var forward);
 }
