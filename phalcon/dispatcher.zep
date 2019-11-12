@@ -646,7 +646,7 @@ abstract class Dispatcher implements DispatcherInterface, InjectionAwareInterfac
 			// and blog posts for 4.0, this change will happen.
 			//
 			// @see https://github.com/phalcon/cphalcon/pull/13112
-			if wasFresh === true {
+			if wasFresh === true || !handlerLasting {
 				if method_exists(handler, "initialize") {
 					try {
 						let this->_isControllerInitialize = true;
