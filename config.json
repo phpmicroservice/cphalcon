@@ -10,7 +10,7 @@
     "name": "phalcon",
     "description": "Web framework delivered as a C-extension for PHP",
     "author": "Phalcon Team and contributors",
-    "version": "cli3.4.5",
+    "version": "cli3.4.5.2",
     "verbose": false,
     "optimizer-dirs": [
         "optimizers"
